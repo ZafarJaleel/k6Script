@@ -1,4 +1,6 @@
 #!/usr/bin/env
-REPORT_DATE=$(date +"%Y_%m_%dT%H_%M_%S")
-##Define Environment Variables
-k6 run --config config.json --out csv="report/report_$REPORT_DATE.csv" tests/test.js
+##Define  Variables
+api_pid=$!
+API_HOST=test.k6.io
+k6 run -e API_HOST=$API_HOST --config config.json tests/test.js
+
